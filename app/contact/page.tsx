@@ -9,10 +9,8 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { MapPin, Phone, Mail, Globe } from "lucide-react"
-import { useToast } from "@/hooks/use-toast"
 
 export default function ContactPage() {
-  const { toast } = useToast()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,10 +28,7 @@ export default function ContactPage() {
     e.preventDefault()
     // In a real application, you would send this data to your server
     console.log("Form submitted:", formData)
-    toast({
-      title: "Message Sent",
-      description: "Thank you for your message. We will get back to you soon.",
-    })
+
     // Reset form
     setFormData({
       name: "",
