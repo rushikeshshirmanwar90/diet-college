@@ -50,7 +50,7 @@ export default function ProgramsPage() {
               <BookOpen className="h-6 w-6" />
             </div>
             <CardTitle>Science Experiments</CardTitle>
-            <CardDescription>Let's Learn Science through Experiments</CardDescription>
+            <CardDescription>Let Learn Science through Experiments</CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-gray-600">

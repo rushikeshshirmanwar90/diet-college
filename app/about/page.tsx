@@ -51,7 +51,7 @@ export default function AboutPage() {
             <h2 className="mb-4 text-2xl font-bold text-gray-900">Initiatives and Programs</h2>
             <p className="text-gray-600">DIET Nanded runs various educational programs. One notable initiative is:</p>
             <div className="mt-4 rounded-lg border border-gray-200 p-4">
-              <h3 className="text-lg font-semibold text-gray-900">"Let's Learn Science through Experiments"</h3>
+              <h3 className="text-lg font-semibold text-gray-900">&quot;Lets Learn Science through Experiments&quot;</h3>
               <p className="mt-2 text-gray-600">
                 Under this program, science experiments are conducted every Saturday with participation from around 500
                 schools.
@@ -63,7 +63,7 @@ export default function AboutPage() {
             <h2 className="mb-4 text-2xl font-bold text-gray-900">Courses and Admission</h2>
             <p className="text-gray-600">
               DIET Nanded primarily offers the D.Ed (Diploma in Education) course, which is essential for teacher
-              training. For more details, please visit the institute's official website.
+              training. For more details, please visit the institutes official website.
             </p>
           </div>
         </div>
@@ -156,7 +156,7 @@ export default function AboutPage() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-gray-600">
-                  To enhance teachers' professional skills through workshops, training camps, and other programs.
+                  To enhance teachers professional skills through workshops, training camps, and other programs.
                 </p>
               </CardContent>
             </Card>
