@@ -81,90 +81,114 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Programs & Initiatives */}
+      {/* Departments Preview */}
       <section className="bg-gray-50 py-12">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mb-10 text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900">Programs & Initiatives</h2>
-            <p className="mt-2 text-gray-600">Discover our educational programs and innovative initiatives</p>
+            <h2 className="text-3xl font-bold tracking-tight text-gray-900">Our Departments</h2>
+            <p className="mt-2 text-gray-600">Explore the various departments at DIET Nanded</p>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <Card>
               <CardHeader>
-                <CardTitle>D.Ed Program</CardTitle>
-                <CardDescription>Diploma in Education</CardDescription>
+                <CardTitle>Human Resource (HRD)</CardTitle>
+                <CardDescription>Teacher training and professional development</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600">
-                  Our flagship teacher training program essential for aspiring primary and secondary school teachers.
+                  Responsible for teacher training and professional development programs to enhance teaching skills.
                 </p>
                 <Button asChild variant="link" className="mt-4 p-0 text-orange-600">
-                  <Link href="#" className="flex items-center gap-1">
-                    Coming Soon <ArrowRight className="h-4 w-4" />
+                  <Link href="/departments/hrd" className="flex items-center gap-1">
+                    Learn More <ArrowRight className="h-4 w-4" />
                   </Link>
                 </Button>
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
-                <CardTitle>Science Experiments</CardTitle>
-                <CardDescription>Let&apos;s Learn Science through Experiments</CardDescription>
+                <CardTitle>IT and Media</CardTitle>
+                <CardDescription>Technology integration in education</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600">
-                  Science experiments conducted every Saturday with participation from around 500 schools.
+                  Manages technology infrastructure and media production for educational purposes.
                 </p>
                 <Button asChild variant="link" className="mt-4 p-0 text-orange-600">
-                  <Link href="#" className="flex items-center gap-1">
-                    Coming Soon <ArrowRight className="h-4 w-4" />
+                  <Link href="/departments/it-media" className="flex items-center gap-1">
+                    Learn More <ArrowRight className="h-4 w-4" />
                   </Link>
                 </Button>
               </CardContent>
             </Card>
             <Card>
               <CardHeader>
-                <CardTitle>Teacher Workshops</CardTitle>
-                <CardDescription>Continuous Professional Development</CardDescription>
+                <CardTitle>Social Sciences Arts and Sports</CardTitle>
+                <CardDescription>Holistic educational development</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600">
-                  Regular workshops and training camps to enhance teachers professional skills and knowledge.
+                  Covers social sciences, arts education, and sports activities for comprehensive development.
                 </p>
                 <Button asChild variant="link" className="mt-4 p-0 text-orange-600">
-                  <Link href="#" className="flex items-center gap-1">
-                    Coming Soon <ArrowRight className="h-4 w-4" />
+                  <Link href="/departments/social-sciences" className="flex items-center gap-1">
+                    Learn More <ArrowRight className="h-4 w-4" />
                   </Link>
                 </Button>
               </CardContent>
             </Card>
           </div>
+          <div className="mt-8 text-center">
+            <Button asChild className="bg-orange-600 hover:bg-orange-700">
+              <Link href="/departments">View All Departments</Link>
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* News & Updates */}
+      {/* Events Preview */}
       <section className="container mx-auto px-4 py-12 md:px-6">
         <div className="mb-10 text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-gray-900">News & Updates</h2>
-          <p className="mt-2 text-gray-600">Stay informed about our latest activities and announcements</p>
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900">Upcoming Events</h2>
+          <p className="mt-2 text-gray-600">Stay informed about our latest activities and events</p>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {[1, 2, 3].map((item) => (
-            <div key={item} className="rounded-lg border border-gray-200 p-4">
-              <div className="flex items-center gap-2 text-sm text-gray-500">
-                <Calendar className="h-4 w-4" />
-                <span>May 1, 2025</span>
+            <Card key={item} className="overflow-hidden">
+              <div className="relative h-[200px] w-full">
+                <Image
+                  src={`/placeholder.svg?height=400&width=600`}
+                  alt={`Event ${item}`}
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <h3 className="mt-2 text-lg font-semibold text-gray-900">Upcoming Teacher Training Workshop</h3>
-              <p className="mt-2 text-gray-600">
-                Registration open for our upcoming workshop on innovative teaching methodologies.
-              </p>
-              <Button asChild variant="link" className="mt-2 p-0 text-orange-600">
-                <Link href="#" className="flex items-center gap-1">
-                  Read More <ArrowRight className="h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
+              <CardHeader>
+                <CardTitle>Annual Science Exhibition</CardTitle>
+                <CardDescription className="flex flex-col gap-1">
+                  <div className="flex items-center gap-1">
+                    <Calendar className="h-4 w-4 text-orange-600" />
+                    <span>June 15, 2025</span>
+                  </div>
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">
+                  Showcasing innovative science projects from schools across the district.
+                </p>
+                <Button asChild variant="link" className="mt-4 p-0 text-orange-600">
+                  <Link href="/events" className="flex items-center gap-1">
+                    View Details <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
           ))}
+        </div>
+        <div className="mt-8 text-center">
+          <Button asChild className="bg-orange-600 hover:bg-orange-700">
+            <Link href="/events">View All Events</Link>
+          </Button>
         </div>
       </section>
 
@@ -177,14 +201,14 @@ export default function Home() {
           </div>
           <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {[
-              { title: "Annual Report", icon: FileText },
-              { title: "Teacher Diploma Admission", icon: GraduationCap },
-              { title: "School Quality Assessment", icon: BookOpen },
-              { title: "Government Portals", icon: Users },
+              { title: "Annual Report", icon: FileText, href: "#" },
+              { title: "Teacher Diploma Admission", icon: GraduationCap, href: "#" },
+              { title: "School Quality Assessment", icon: BookOpen, href: "#" },
+              { title: "Government Portals", icon: Users, href: "#" },
             ].map((link, index) => (
               <Link
                 key={index}
-                href="#"
+                href={link.href}
                 className="flex items-center gap-3 rounded-lg border border-orange-200 bg-white p-4 transition-colors hover:bg-orange-100"
               >
                 <div className="rounded-full bg-orange-100 p-2 text-orange-600">

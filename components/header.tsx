@@ -3,15 +3,66 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+
+const departments = [
+  { name: "Human Resource (HRD)", href: "/departments/hrd" },
+  { name: "Coordination", href: "/departments/coordination" },
+  { name: "IT and Media", href: "/departments/it-media" },
+  { name: "Language", href: "/departments/language" },
+  { name: "Social Sciences Arts and Sports", href: "/departments/social-sciences" },
+  { name: "Pre-service education, early childhood education, psychology", href: "/departments/pre-service" },
+  { name: "Equality", href: "/departments/equality" },
+  { name: "International Quality Room", href: "/departments/quality" },
+]
+
+const dietLocations = [
+  { name: "Ahilyanagar", href: "/diet/ahilyanagar" },
+  { name: "Akola", href: "/diet/akola" },
+  { name: "Amravati", href: "/diet/amravati" },
+  { name: "Chhatrapati Sambhajinagar", href: "/diet/sambhajinagar" },
+  { name: "Beed", href: "/diet/beed" },
+  { name: "Bhandara", href: "/diet/bhandara" },
+  { name: "Buldhana", href: "/diet/buldhana" },
+  { name: "Chandrapur", href: "/diet/chandrapur" },
+  { name: "Dharashiva", href: "/diet/dharashiva" },
+  { name: "Dhule", href: "/diet/dhule" },
+  { name: "Gadchiroli", href: "/diet/gadchiroli" },
+  { name: "Gondia", href: "/diet/gondia" },
+  { name: "Hingoli", href: "/diet/hingoli" },
+  { name: "Jalgaon", href: "/diet/jalgaon" },
+  { name: "Jalna", href: "/diet/jalna" },
+  { name: "Kolhapur", href: "/diet/kolhapur" },
+  { name: "Latur", href: "/diet/latur" },
+  { name: "Nagpur", href: "/diet/nagpur" },
+  { name: "Nanded", href: "/diet/nanded" },
+  { name: "Nandurbar", href: "/diet/nandurbar" },
+  { name: "Nashik", href: "/diet/nashik" },
+  { name: "Palghar", href: "/diet/palghar" },
+  { name: "Parbhani", href: "/diet/parbhani" },
+  { name: "Pune", href: "/diet/pune" },
+  { name: "Raigad", href: "/diet/raigad" },
+  { name: "Ratnagiri", href: "/diet/ratnagiri" },
+  { name: "Sangli", href: "/diet/sangli" },
+  { name: "Satara", href: "/diet/satara" },
+  { name: "Sindhudurg", href: "/diet/sindhudurg" },
+  { name: "Solapur", href: "/diet/solapur" },
+  { name: "Thane", href: "/diet/thane" },
+  { name: "Wardha", href: "/diet/wardha" },
+  { name: "Washim", href: "/diet/washim" },
+  { name: "Yavatmal", href: "/diet/yavatmal" },
+]
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Programs", href: "/programs" },
-  { name: "Resources", href: "/resources" },
+  { name: "About Us", href: "/about" },
+  { name: "Departments", href: "/departments", dropdown: departments },
+  { name: "DIET", href: "/diet", dropdown: dietLocations },
+  { name: "Events", href: "/events" },
   { name: "Contact", href: "/contact" },
 ]
 
@@ -71,7 +122,7 @@ export default function Header() {
                 <Menu className="h-6 w-6" aria-hidden="true" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-full max-w-xs">
+            <SheetContent side="right" className="w-full max-w-xs overflow-y-auto">
               <div className="flex items-center justify-between">
                 <Link
                   href="/"
@@ -89,16 +140,40 @@ export default function Header() {
               <div className="mt-6 flow-root">
                 <div className="-my-6 divide-y divide-gray-200">
                   <div className="space-y-2 py-6">
-                    {navigation.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        className="block px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
+                    {navigation.map((item) =>
+                      item.dropdown ? (
+                        <Accordion type="single" collapsible key={item.name}>
+                          <AccordionItem value={item.name} className="border-none">
+                            <AccordionTrigger className="py-2 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                              {item.name}
+                            </AccordionTrigger>
+                            <AccordionContent>
+                              <div className="ml-4 space-y-1">
+                                {item.dropdown.map((subItem) => (
+                                  <Link
+                                    key={subItem.name}
+                                    href={subItem.href}
+                                    className="block py-2 px-3 text-sm text-gray-600 hover:bg-gray-50"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                  >
+                                    {subItem.name}
+                                  </Link>
+                                ))}
+                              </div>
+                            </AccordionContent>
+                          </AccordionItem>
+                        </Accordion>
+                      ) : (
+                        <Link
+                          key={item.name}
+                          href={item.href}
+                          className="block px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {item.name}
+                        </Link>
+                      ),
+                    )}
                   </div>
                 </div>
               </div>
@@ -106,16 +181,39 @@ export default function Header() {
           </Sheet>
         </div>
 
-        <div className="hidden lg:flex lg:gap-x-8">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-sm font-semibold leading-6 text-gray-900 hover:text-orange-600"
-            >
-              {item.name}
-            </Link>
-          ))}
+        <div className="hidden lg:flex lg:gap-x-4">
+          {navigation.map((item) =>
+            item.dropdown ? (
+              <DropdownMenu key={item.name}>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    className="flex items-center gap-1 text-sm font-semibold leading-6 text-gray-900 hover:text-orange-600"
+                  >
+                    {item.name}
+                    <ChevronDown className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-56 max-h-[70vh] overflow-y-auto">
+                  {item.dropdown.map((subItem) => (
+                    <DropdownMenuItem key={subItem.name} asChild>
+                      <Link href={subItem.href} className="w-full">
+                        {subItem.name}
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="text-sm font-semibold leading-6 text-gray-900 hover:text-orange-600 px-3 py-2"
+              >
+                {item.name}
+              </Link>
+            ),
+          )}
         </div>
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
