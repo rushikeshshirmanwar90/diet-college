@@ -71,7 +71,17 @@ const departments = [
   },
 ]
 
-export default function DepartmentPage({ params }: { params: { id: string } }) {
+// Add proper type definition for the props
+type PageParams = {
+  id: string;
+}
+
+type Props = {
+  params: PageParams;
+  searchParams?: Record<string, string | string[] | undefined>;
+}
+
+export default function DepartmentPage({ params }: Props) {
   const department = departments.find((dept) => dept.id === params.id)
 
   if (!department) {
