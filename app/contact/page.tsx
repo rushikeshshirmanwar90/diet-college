@@ -28,7 +28,7 @@ export default function ContactPage() {
     e.preventDefault()
     // In a real application, you would send this data to your server
     console.log("Form submitted:", formData)
-
+    alert("form submitted successfully");
     // Reset form
     setFormData({
       name: "",
@@ -195,7 +195,7 @@ export default function ContactPage() {
             width="100%"
             height="400"
             style={{ border: 0 }}
-            allowFullScreen={false}
+            allowFullScreen={true}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade">
           </iframe>
